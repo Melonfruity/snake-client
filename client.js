@@ -29,12 +29,11 @@ const connect = function() {
     console.log('Sent name');
   });
 
-/*  setTimeout(() => {
-    conn.write(`Move: up`, () => {
+      conn.write(`Move: up`, () => {
         console.log(`${commands.up}`);
       });
-  }, 1100)
-
+      
+  /*
   setInterval(() => {
     conn.write(`Move: up`, () => {
         console.log(`${commands.up}`);
