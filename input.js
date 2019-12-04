@@ -1,4 +1,5 @@
 let connection;
+let command = `Move: up`
 
 const setupInput = function(conn) {
     connection = conn;
@@ -7,14 +8,14 @@ const setupInput = function(conn) {
     stdin.setEncoding('utf8');
     stdin.resume();
     stdin.on('data', key => {
-        connection.write(handleUserInput(key), () => {
-            console.log(key);
-        });
+        handleUserInput(key);
     });
+    console.log(stdin);
     return stdin;
   }
 
 const handleUserInput = (key) => {
+
     if(key === `\u0003`){
         process.exit();
     } else if(key === 'm'){
@@ -22,16 +23,26 @@ const handleUserInput = (key) => {
     }
     switch (key) {
         case 'w':
-            return `Move: up`;
+            command = `Move: down`;
+            break;
         case 's':
-            return `Move: down`;
+            command = `Move: down`;
+            break;
         case 'a':
-            return `Move: left`;
+            command = `Move: left`;
+            break;
         case 'd':
-            return `Move: right`;
+            command = `Move: right`;
+            break;
         default:
-            return key;
+            break;
     }
 }
+
+setInterval(() => {
+    connection.write(command, () => {
+        console.log('moving');
+    })
+}, 300);
 
 module.exports = {setupInput};

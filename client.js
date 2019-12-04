@@ -3,11 +3,6 @@ const { IP, PORT } = require('./constants')
 /**
  * Establishes connection with the game server
  */
-const commands = { 
-    up: `up`, 
-    down: `down`, 
-    right: `right`, 
-    left: `left`}
 
 const connect = function() {
     const conn = net.createConnection({ 
@@ -29,9 +24,9 @@ const connect = function() {
         console.log('Sent name');
     });
 
-    conn.write(`Move: up`, () => {
+    /* conn.write(`Move: up`, () => {
         console.log(`${commands.up}`);
-    });
+    }); */
 
     /*
     setInterval(() => {
