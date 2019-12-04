@@ -3,6 +3,12 @@ const net = require('net');
 /**
  * Establishes connection with the game server
  */
+const commands = { 
+    up: `up`, 
+    down: `down`, 
+    right: `right`, 
+    left: `left`}
+
 const connect = function() {
   const conn = net.createConnection({ 
     host: 'localhost',
@@ -22,7 +28,21 @@ const connect = function() {
   conn.write(`Name: EL4`, () => {
     console.log('Sent name');
   });
-  return conn;
+
+/*  setTimeout(() => {
+    conn.write(`Move: up`, () => {
+        console.log(`${commands.up}`);
+      });
+  }, 1100)
+
+  setInterval(() => {
+    conn.write(`Move: up`, () => {
+        console.log(`${commands.up}`);
+      });
+  } ,50)
+ */
+  
+    return conn;
 }
 
 module.exports = {connect}
