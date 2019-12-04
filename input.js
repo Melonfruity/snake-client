@@ -14,9 +14,11 @@ const setupInput = function(conn) {
     return stdin;
   }
 
-  const handleUserInput = (key) => {
+const handleUserInput = (key) => {
     if(key === `\u0003`){
         process.exit();
+    } else if(key === 'm'){
+        return `Say: Yoou`;
     }
     switch (key) {
         case 'w':
@@ -28,10 +30,8 @@ const setupInput = function(conn) {
         case 'd':
             return `Move: right`;
         default:
-            console.log(key);
-            break;
+            return key;
     }
+}
 
-  }
-
-  module.exports = {setupInput};
+module.exports = {setupInput};
